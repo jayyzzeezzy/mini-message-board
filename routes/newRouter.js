@@ -5,7 +5,7 @@ const newRouter = Router();
 // load EJS form template
 // and point to the form template
 newRouter.get("/", (req, res) => {
-    res.render("form", { message: "submit new message here!" });
+    res.render("form", { title: "Post a message!" });
 });
 
 module.exports = newRouter;

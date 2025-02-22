@@ -1,3 +1,18 @@
-<form method="POST" action="/new">
-    <%= message %>
-</form>
+<html>
+    <body>
+        <h2><%= title %></h2>
+        <form method="POST" action="/new">
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input id="name" name="messageUsername" type="text" placeholder="Alex">
+            </div>
+            <div class="input-group">
+                <label for="messageText">Message</label>
+                <textarea name="messageText" id="messageText" placeholder="What do you want to say?"></textarea>
+            </div>
+            <div class="button-group">
+                <button type="submit">Post</button>
+            </div>
+        </form>
+    </body>
+</html>

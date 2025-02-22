@@ -14,10 +14,16 @@ app.set("view engine", "ejs");
 
 // set up route
 // EJS template is used in this route
-const indexRouter = require("./routes/indexRouter");
+const {indexRouter} = require("./routes/indexRouter");
 const newRouter = require("./routes/newRouter");
+const messageRouter = require("./routes/messageRouter");
+
+// set up an app level Express middleware
+// to parse form data in a POST request
+app.use(express.urlencoded({ extended: true }));
 
 // define routes and their corresponding middleware
+app.use("/message", messageRouter);
 app.use("/new", newRouter);
 app.use("/", indexRouter);
 

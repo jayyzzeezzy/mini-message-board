@@ -1,14 +1,24 @@
 <html>
     <body>
+        <h2><%= title %></h2>
+        <a href="/new">
+            <button class="writeBtn">Write</button>
+        </a>
         <ul>
             <% for (let i = 0; i < messages.length; i++) { %>
                 <li>
-                    <p><%= messages[i].text %></p>
-                    <p><%= messages[i].user %></p>
-                    <p><%= messages[i].added %></p>
+                    <div class="message-header">
+                        <p><%= messages[i].text %></p>
+                        <a href="/message/<%= messages[i].user %>">
+                            <button class="openBtn">Open</button>
+                        </a>
+                    </div>
+                    <div class="message-body">
+                        <p><%= messages[i].user %></p>
+                        <p><%= messages[i].added %></p>
+                    </div>
                 </li>
             <% } %>
         </ul>
-        
     </body>
 </html>

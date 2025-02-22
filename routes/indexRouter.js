@@ -17,7 +17,12 @@ const messages = [
 // route handler
 // load EJS index template
 indexRouter.get("/", (req, res) => {
-    res.render("index", { title: "Mini Messageboard", messages: messages });
+    res.render("index", { title: "Mini Message Board", messages: messages });
+});
+indexRouter.post("/new", (req, res) => {
+    const {messageText, messageUsername} = req.body;
+    messages.push({ text: messageText, user: messageUsername, added: new Date() });
+    res.redirect("/");
 });
 
-module.exports = indexRouter;
+module.exports = {indexRouter, messages};
