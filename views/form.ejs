@@ -1,6 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html lang="end">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>New Message</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
     <body>
+        <main>
         <h2><%= title %></h2>
+        <a href="/">
+            <button class="backBtn" type="button">Back</button>
+        </a>
         <form method="POST" action="/new">
             <div class="input-group">
                 <label for="name">Name</label>
@@ -8,11 +19,12 @@
             </div>
             <div class="input-group">
                 <label for="messageText">Message</label>
-                <textarea name="messageText" id="messageText" placeholder="What do you want to say?"></textarea>
+                <textarea name="messageText" id="messageText" placeholder="What do you want to post?"></textarea>
             </div>
             <div class="button-group">
-                <button type="submit">Post</button>
+                <button class="postBtn" type="submit">Post</button>
             </div>
         </form>
+        </main>
     </body>
 </html>
