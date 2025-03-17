@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // set up route
 // EJS template is used in this route
-const {indexRouter} = require("./routes/indexRouter");
+const indexRouter = require("./routes/indexRouter");
 const newRouter = require("./routes/newRouter");
 const messageRouter = require("./routes/messageRouter");
 

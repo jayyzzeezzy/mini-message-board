@@ -1,28 +1,17 @@
 const { Router } = require("express");
 const indexRouter = Router();
-
-const messages = [
-    {
-        text: "Hi there!",
-        user: "Amando",
-        added: new Date(),
-    },
-    {
-        text: "Hello World!",
-        user: "Charles",
-        added: new Date(),
-    },
-];
+const db = require("../db/queries");
 
 // route handler
 // load EJS index template
-indexRouter.get("/", (req, res) => {
+indexRouter.get("/", async (req, res) => {
+    const messages = await db.getAllMessages();
     res.render("index", { title: "Mini Message Board", messages: messages });
 });
-indexRouter.post("/new", (req, res) => {
+indexRouter.post("/new", async (req, res) => {
     const {messageText, messageUsername} = req.body;
-    messages.push({ text: messageText, user: messageUsername, added: new Date() });
+    await db.insertMessage(messageUsername, messageText);
     res.redirect("/");
 });
 
-module.exports = {indexRouter, messages};
+module.exports = indexRouter;

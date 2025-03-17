@@ -1,14 +1,15 @@
 const { Router } = require("express");
 const messageRouter = Router();
-const {messages} = require("../routes/indexRouter");
+const db = require("../db/queries");
+
 
 // route handler
 // load EJS form template
-messageRouter.get("/:username", (req, res) => {
+messageRouter.get("/:username", async (req, res) => {
     const { username } = req.params;
 
-    // find the object that contains the same username as req.params
-    const message = messages.find((item) => item.user == username);
+    // search in remote DB for a matching username
+    const message = await db.getMessageByUsername(username);
     
     res.render("message", { username: username, message: message });
 });
